@@ -33,29 +33,26 @@ platforms:
   enabled: true                         # 是否启用热榜平台抓取
   sources:
      # === 财经投资类 ===
-  - id: "wallstreetcn-hot"
-    name: "华尔街见闻 最热"
-  - id: "wallstreetcn-quick"
-    name: "华尔街见闻 快讯"
-  - id: "wallstreetcn-news"
-    name: "华尔街见闻 最新"
-  - id: "jin10"
-    name: "金十数据"
-  - id: "fastbull"
-    name: "快讯通"
-  # === 社交/短视频/娱乐类 ===
-  - id: "weibo"
-    name: "微博"
-  - id: "douyin"
-    name: "抖音"
-  - id: "bilibili-hot-search"
-    name: "bilibili 热搜"
-  - id: "tieba"
-    name: "贴吧"
-  - id: "zhihu"
-    name: "知乎"
-  - id: "hupu"
-    name: "虎扑"
+    - id: "wallstreetcn-hot"
+      name: "华尔街见闻 最热"
+    - id: "wallstreetcn-quick"
+      name: "华尔街见闻 快讯"
+    - id: "wallstreetcn-news"
+      name: "华尔街见闻 最新"
+    - id: "jin10"
+      name: "金十数据"
+    - id: "weibo"
+      name: "微博"
+    - id: "douyin"
+      name: "抖音"
+    - id: "bilibili-hot-search"
+      name: "bilibili 热搜"
+    - id: "tieba"
+      name: "贴吧"
+    - id: "zhihu"
+      name: "知乎"
+    - id: "hupu"
+      name: "虎扑"
 
 
 
@@ -95,17 +92,11 @@ rss:
     - id: "hacker-news"
       name: "Hacker News"
       url: "https://hnrss.org/frontpage"
-      # max_age_days: 1               # 示例：只推送1天内的文章
 
     - id: "ruanyifeng"
       name: "阮一峰的网络日志"
       url: "http://www.ruanyifeng.com/blog/atom.xml"
-      # max_age_days: 7               # 示例：推送7天内的文章（更新较慢的博客）
-    
-    - id: "yahoo-finance"
-      name: "雅虎财经"
-      url: "https://finance.yahoo.com/news/rssindex"
-      enabled: false                  # 禁用
+
 
     # 自定义源示例
     # - id: "custom-feed"
@@ -168,31 +159,16 @@ display:
   #   2. 下方 regions 中对应开关为 true
   region_order:
     - new_items                       # 1️⃣ 新增热点区域
-    - hotlist                         # 2️⃣ 热榜区域（关键词匹配）
-    - rss                             # 3️⃣ RSS 订阅区域
-    - standalone                      # 4️⃣ 独立展示区
-    - ai_analysis                     # 5️⃣ AI 分析区域
-
-  # 推送区域开关
-  # 控制各区域是否启用（配合 region_order 使用）
+    - hotlist                       # 2️⃣ 热榜区域（关键词匹配）
+    - rss                       # 3️⃣ RSS 订阅区域
+    - standalone                       # 4️⃣ 独立展示区
+    - ai_analysis                       # 5️⃣ AI 分析区域
   regions:
-    hotlist: true                     # 热榜区域（关键词匹配的热点新闻）
-    new_items: true                   # 新增热点区域（含热榜新增 + RSS 新增）
-                                      # 注：热点词汇统计中的新增标记🆕不受此配置影响
-
-    rss: false                         # RSS 订阅区域
-                                      # 开启后将对 RSS 进行关键词分析并在通知中展示
-                                      # 关闭后跳过分析，但独立展示区不受影响
-
-    standalone: false                 # 独立展示区（完整热榜/RSS，不受关键词过滤）
-    ai_analysis: true                 # AI 分析区域
-
-  # 📋 独立展示区配置（仅在 regions.standalone: true 时生效）
-  # 用途：将指定平台的完整热榜/RSS 单独展示，不受关键词过滤影响
-  # 适用场景：
-  #   - 想完整查看某个平台的热榜排名
-  #   - RSS 源内容较少，希望全部展示而非只显示关键词匹配的
-  # 注意：同一新闻可能同时出现在关键词匹配区和独立展示区
+    new_items: true # 新增热点区域（含热榜新增 + RSS 新增）
+    hotlist: true # 热榜区域（关键词匹配的热点新闻）
+    rss: true # RSS 订阅区域
+    standalone: true # 独立展示区（完整热榜/RSS，不受关键词过滤）
+    ai_analysis: true # AI 分析区域
   standalone:
     platforms: []                     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
     rss_feeds: []                     # RSS 源 ID 列表（如 ["hacker-news"]）
@@ -232,7 +208,7 @@ notification:
   # 💡 想要精准定时？建议使用 Docker 部署在个人服务器上
   push_window:
     enabled: false                    # 是否启用推送时间窗口控制
-    start: "20:00"                    # 开始时间（北京时间）
+    start: "10:00"                    # 开始时间（北京时间）
     end: "22:00"                      # 结束时间（北京时间）
     once_per_day: true                # true=窗口内只推送一次，false=窗口内每次执行都推送
 
