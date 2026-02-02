@@ -43,12 +43,6 @@ platforms:
       name: "金十数据"
     - id: "weibo"
       name: "微博"
-    - id: "douyin"
-      name: "抖音"
-    - id: "bilibili-hot-search"
-      name: "bilibili 热搜"
-    - id: "tieba"
-      name: "贴吧"
     - id: "zhihu"
       name: "知乎"
     - id: "hupu"
@@ -96,6 +90,22 @@ rss:
     - id: "ruanyifeng"
       name: "阮一峰的网络日志"
       url: "http://www.ruanyifeng.com/blog/atom.xml"
+
+    - id: "duandian"
+      name: "端点"
+      url: "https://terminus2049.github.io/atom.xml"
+
+    - id: "sspai"
+      name: "少数派"
+      url: "https://sspai.com/feed"
+
+    - id: "cnbbc"
+      name: "bbc 中国"
+      url: "https://feedmaker.kindle4rss.com/feeds/cn-bbc.xml"
+
+
+
+
 
 
     # 自定义源示例
@@ -158,17 +168,17 @@ display:
   #   1. 在此列表中
   #   2. 下方 regions 中对应开关为 true
   region_order:
+    - ai_analysis                       # 5️⃣ AI 分析区域
+    - rss                       # 3️⃣ RSS 订阅区域
     - new_items                       # 1️⃣ 新增热点区域
     - hotlist                       # 2️⃣ 热榜区域（关键词匹配）
-    - rss                       # 3️⃣ RSS 订阅区域
     - standalone                       # 4️⃣ 独立展示区
-    - ai_analysis                       # 5️⃣ AI 分析区域
   regions:
+    ai_analysis: true # AI 分析区域
+    rss: true # RSS 订阅区域
     new_items: true # 新增热点区域（含热榜新增 + RSS 新增）
     hotlist: true # 热榜区域（关键词匹配的热点新闻）
-    rss: true # RSS 订阅区域
     standalone: true # 独立展示区（完整热榜/RSS，不受关键词过滤）
-    ai_analysis: true # AI 分析区域
   standalone:
     platforms: []                     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
     rss_feeds: []                     # RSS 源 ID 列表（如 ["hacker-news"]）
@@ -431,7 +441,7 @@ ai_analysis:
 # 模型配置见上方 ai 配置段
 # ===============================================================
 ai_translation:
-  enabled: false                    # 是否启用翻译功能
+  enabled: true                    # 是否启用翻译功能
 
   # 翻译目标语言
   # 格式：自然语言描述
